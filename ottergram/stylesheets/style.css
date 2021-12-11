@@ -43,7 +43,7 @@ ul{
   align-items: center;
 }
 .detail-image-frame{
-  text-transform: content;
+  text-align: center;
   position: relative;
 }
 .detail-image-title{
@@ -102,4 +102,22 @@ ul{
   color: rgb(202, 238, 255);
 
   font-size: 18px;
+}
+@media all and (min-width: 768px) and (orientation: landscape){
+  .main-content{
+    flex-direction: row;
+    overflow: hidden;
+  }
+  .thumbnail-list{
+    flex-direction: column;
+    order: 0;
+    margin-left: 20px;
+  }
+  .thumbnail-item{
+    max-width: 260px;
+  }
+  .thumbnail-item + .thumbnail-item{
+    margin-top: 20px;
+  }
+
 }
