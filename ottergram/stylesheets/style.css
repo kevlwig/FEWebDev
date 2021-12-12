@@ -45,6 +45,8 @@ ul{
 .detail-image-frame{
   text-align: center;
   position: relative;
+
+  transition: transform 333ms cubic-bezier(.09,.89,.46,.81);
 }
 .detail-image-title{
   position: absolute;
@@ -66,6 +68,9 @@ ul{
 .header-content{
   flex: 0 1 auto;
 }
+.hidden-detail .detail-image-container{
+  display: none;
+}
 .main-content{
   flex: 1 1 auto;
 
@@ -78,10 +83,15 @@ ul{
 }
 .thumbnail-item{
   display: inline-block;
-  min-width: 120px;
-  max-width: 120px;
+  min-width: 150px;
+  max-width: 150px;
   border: 1px solid rgb(100%, 100%, 100%);
   border: 1px solid rgba(100%, 100%, 100%, 0.8);
+
+  transition: transform 133ms ease-in-out;
+}
+.thumbnail-item:hover{
+  transform: scale(1.1);
 }
 .thumbnail-list{
   flex: 0 1 auto;
@@ -92,6 +102,8 @@ ul{
   white-space: nowrap;
   overflow-x: auto;
   list-style: none;
+
+  padding: 20px 10px;
 }
 .thumbnail-title{
   display: block;
@@ -103,6 +115,21 @@ ul{
 
   font-size: 18px;
 }
+.hidden-detail .main-content{
+  flex-direction: column;
+}
+.hidden-detail .thumbnail-list{
+  flex-direction: column;
+  align-items: center;
+}
+.hidden-detail .thumbnail-item{
+  max-width: 80%;
+}
+.is-tiny{
+  transform: scale(0.001);
+  transition: transform 0ms;
+}
+
 @media all and (min-width: 768px) and (orientation: landscape){
   .main-content{
     flex-direction: row;
@@ -112,6 +139,8 @@ ul{
     flex-direction: column;
     order: 0;
     margin-left: 20px;
+
+    padding: 10px 35px;
   }
   .thumbnail-item{
     max-width: 260px;
