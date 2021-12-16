@@ -12,7 +12,7 @@
   <section>
     <div class="panel panel-default">
       <div class="panel-body">
-        <form data-coffee-order="form" class="" action="index.html" method="post">
+        <form data-coffee-order="form">
           <div class="form-group">
             <label for="coffeeOrder">Coffee Order</label>
             <input type="text" name="coffee" class="form-control" id="coffeeOrder" autofocus>
@@ -50,7 +50,7 @@
               <option value="mocha">Mocha</option>
             </select>
           </div>
-          <!-- range -->
+          <!-- caffeine range -->
           <div class="form-group">
             <label for="strengthLevel">Caffeine Strength</label>
             <input type="range" id="strengthLevel" name="strength" value="25">
@@ -66,8 +66,10 @@
 
 
   <!-- scripts -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="scripts/datastore.js" charset="utf-8"></script>
   <script type="text/javascript" src="scripts/truck.js" charset="utf-8"></script>
+  <script type="text/javascript" src="scripts/formhandler.js" charset="utf-8"></script>
   <script type="text/javascript" src="scripts/main.js" charset="utf-8"></script>
 </body>
 
