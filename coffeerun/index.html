@@ -5,6 +5,11 @@
   <meta charset="utf-8">
   <title>coffeerun</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css">
+  <style media="screen">
+    form :not(:focus):required:invalid{
+      border-color: #a94442;
+    }
+  </style>
 </head>
 
 <body class="container">
@@ -15,11 +20,11 @@
         <form data-coffee-order="form">
           <div class="form-group">
             <label for="coffeeOrder">Coffee Order</label>
-            <input type="text" name="coffee" class="form-control" id="coffeeOrder" autofocus>
+            <input type="text" name="coffee" class="form-control" id="coffeeOrder" autofocus required pattern="[a-zA-Z\s]+"/>
           </div>
           <div class="form-group">
             <label for="emailInput">Email</label>
-            <input type="email" name="email" class="form-control" id="emailInput" value="" placeholder="youremail@domain.com">
+            <input type="email" name="email" class="form-control" id="emailInput" value="" placeholder="youremail@domain.com" required/>
           </div>
           <!-- radio buttons -->
           <div class="radio">
@@ -75,6 +80,7 @@
   </div>
   <!-- scripts -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="scripts/validation.js" charset="utf-8"> </script>
   <script type="text/javascript" src="scripts/datastore.js" charset="utf-8"></script>
   <script type="text/javascript" src="scripts/truck.js" charset="utf-8"></script>
   <script type="text/javascript" src="scripts/formhandler.js" charset="utf-8"></script>

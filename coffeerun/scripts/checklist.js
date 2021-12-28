@@ -60,6 +60,7 @@
   }
 
   CheckList.prototype.addClickHandler = function (fn) {
+    console.log('Setting click handler for checkbox inputs');
     this.$element.on('click', 'input', function(e) {
       var email = e.target.value;
       this.removeRow(email);
