@@ -32,7 +32,7 @@
 
   FormHandler.prototype.addInputHandler = function (fn) {
     console.log('Setting input handler for field');
-    this.$formElement.on('input', '[name="email"]', function(e){
+    this.$formElement.on('input', '[name="emailAddress"]', function(e){
       var email = e.target.value;
       var message = '';
       if(fn(email)){

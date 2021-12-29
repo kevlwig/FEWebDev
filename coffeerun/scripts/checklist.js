@@ -24,7 +24,7 @@
 
     var $input = $('<input></input>', {
       type: 'checkbox',
-      value: coffeeOrder.email
+      value: coffeeOrder.emailAddress
     });
 
     var description = ' ' + coffeeOrder.size + ' ';
@@ -33,7 +33,7 @@
     }
 
     description += coffeeOrder.coffee + ', ';
-    description += ' (' + coffeeOrder.email + ')';
+    description += ' (' + coffeeOrder.emailAddress + ')';
     description += ' [' + coffeeOrder.strength + 'x]';
 
     $label.append($input);
@@ -46,7 +46,7 @@
 
   CheckList.prototype.addRow = function (coffeeOrder) {
     //ensure orders are unique
-    this.removeRow(coffeeOrder.email);
+    this.removeRow(coffeeOrder.emailAddress);
 
     var rowElement = new Row(coffeeOrder);
     this.$element.append(rowElement.$element);
