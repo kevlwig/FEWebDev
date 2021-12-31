@@ -1,4 +1,4 @@
-(function(window){
+(function(window) {
   'use strict';
   var FORM_SELECTOR = '[data-coffee-order="form"]';
   var CHECKLIST_SELECTOR = '[data-coffee-order="checklist"]'
@@ -13,19 +13,30 @@
   var CheckList = App.CheckList;
 
   var remoteDS = new RemoteDataStore(SERVER_URL);
-  var myTruck = new Truck('ncc-1701', remoteDS);
+  var myTruck = new Truck('ncc-1701', new DataStore());//remoteDS);
   window.myTruck = myTruck;
 
   var formHandler = new FormHandler(FORM_SELECTOR);
   //replacing bind with call to invoke createOrder and Row
   //formHandler.addSubmitHandler(myTruck.createOrder.bind(myTruck));
-
   var checkList = new CheckList(CHECKLIST_SELECTOR);
-  formHandler.addSubmitHandler(function(data){
-    myTruck.createOrder.call(myTruck, data);
-    checkList.addRow.call(checkList, data);
-  });
+
+  /**
+   * event handlers
+   */
+
   formHandler.addInputHandler(Validation.isCompanyEmail);
+  myTruck.printOrders(checkList.addRow.bind(checkList));
+  formHandler.addSubmitHandler(function(data) {
+    return myTruck.createOrder.call(myTruck, data)
+      .then(function() {
+        checkList.addRow.call(checkList, data);
+      },
+      function(){
+        alert('Server is currently unavailable!');
+      });
+  });
+
   checkList.addClickHandler(myTruck.deliveredOrder.bind(myTruck));
 
 })(window);
