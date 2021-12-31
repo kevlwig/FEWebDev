@@ -24,9 +24,26 @@
         console.log(item.name + ' is ' + item.value);
       });
       console.log(data);
-      fn(data);
-      this.reset();
-      this.elements[0].focus();
+      fn(data)
+      .then(function(){
+        this.reset();
+        this.elements[0].focus();
+      }.bind(this));
+    });
+  }
+
+  FormHandler.prototype.addInputHandler = function (fn) {
+    console.log('Setting input handler for field');
+    this.$formElement.on('input', '[name="emailAddress"]', function(e){
+      var email = e.target.value;
+      var message = '';
+      if(fn(email)){
+        e.target.setCustomValidity('');
+      }else{
+        message = email + ' is not an authorized email address!'
+        event.target.setCustomValidity(message);
+      }
+
     });
   }
   App.FormHandler = FormHandler;
