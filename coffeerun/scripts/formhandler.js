@@ -41,7 +41,7 @@
         e.target.setCustomValidity('');
       }else{
         message = email + ' is not an authorized email address!'
-        event.target.setCustomValidity(message);
+        e.target.setCustomValidity(message);
       }
 
     });
